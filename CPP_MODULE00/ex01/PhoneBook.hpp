@@ -5,9 +5,9 @@
 class PhoneBook
 {
 private:
-	Contact	contact[8];
+	Contact	contact[3];
 public:
-	PhoneBook(/* args */);
+	PhoneBook();
 	~PhoneBook();
 	void	AddContact(void);
 	int	SearchContact(void);
