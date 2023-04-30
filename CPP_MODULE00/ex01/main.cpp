@@ -4,41 +4,30 @@ int main(void)
 {
 	PhoneBook book;
 	book.Welcome();
-	std::string input = "";
-	// while (input.compare("EXIT")) {
-	//     if (input.compare("ADD") == 0)
-	//         book.AddContact();
-	//     else if (input.compare("SEARCH") == 0) {
-	//         book.SearchContact();
-	//     }
-	//     input.clear();
-	//     std::cin >> input;
-	// }
-	while(1)
+	std::string command;
+	bool input_cleared = false;
+	while (true)
 	{
-		std::string command;
-		std::cout << "> " << std::flush;
-		std::cin >> command;
-		if (command.length() == 0)
+		if (!input_cleared) {
+			std::cout << "> " << std::flush;
+			std::getline(std::cin, command);
+			if (std::cin.eof())
+				break ;
+		}
+		input_cleared = false;
+		if (command.empty())
 			continue;
-		if (command.compare("ADD") == 0)
+		else if (command == "ADD")
 			book.AddContact();
-		else if (command.compare("SEARCH") == 0)
+		else if (command == "SEARCH")
 		{
-			if (book.SearchContact() == -1)
-				{
-					std::cin.clear();
-					continue ;
-				}
+			if (book.SearchContact() == -2)
+				break ;
 		}
-		else if (command.compare("EXIT") == 0)
-			return (0);
-		else if (command.compare("") == 0)
-		{
-			std::cin.clear();
-			continue ;
-		}
+		else if (command == "EXIT")
+			return 0;
 		else
 			std::cout << "\033[0;30mInvalid command \033[0m\n" << std::endl;
+		std::cin.clear();
 	}
 }

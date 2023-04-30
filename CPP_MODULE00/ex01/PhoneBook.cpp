@@ -1,6 +1,6 @@
 #include "PhoneBook.hpp"
-#include <chrono>
-#include <thread>
+#include <sstream>
+
 PhoneBook::PhoneBook()
 {
 
@@ -23,8 +23,8 @@ void PhoneBook::Welcome(void) const {
 }
 
 void PhoneBook::AddContact(void) {
-	static int	i;
-	if (i == 3)
+	static int	i = 0;
+	if (i == 8)
 		i = 0;
 	this->contact[i].init();
 	i++;
@@ -33,33 +33,38 @@ void PhoneBook::AddContact(void) {
 void PhoneBook::PrintContact(void)
 {
 	std::cout << "---------Contacts---------" << std::endl;
-	for (size_t i = 0; i < 3; i++)
+	for (size_t i = 0; i < 8; i++)
 		this->contact[i].view(i);
 }
 
 int _ReadInput()
 {
-	int	n;
+	std::string n;
+	int input = 0;
 	while (1)
 	{
-		n = 0;
-		std::cin >> n;
-		if(n < 0 || n > 8 || !std::cin.good())
-		{
-			std::cout << "Invalid Index!!, Please Re-enter ..." << std::endl;
-			return (-1);
-		}
+		std::cout << "<> : ";
+		std::getline(std::cin, n);
+		input = atoi(n.c_str());
+		if (std::cin.eof())
+			return (-2);
+		if (input > 0 && input < 10)
+			return (input);
+		std::cout << "Invalid Index!!, Please Re-enter ..." << std::endl;
 	}
-	return (n);
+	return (-1);
 }
 
-int PhoneBook::SearchContact()
+int	PhoneBook::SearchContact(void)
 {
+	int	index;
+
+	index = -1;
 	PrintContact();
-	int	index = -1;
 	index = _ReadInput();
-	if (index > 8 || index < 0)
-		return (-1);
- 	this->contact[index].view(index);
+	if (index == -2)
+		return (-2);
+	std::cout << index << std::endl;
+	this->contact[index - 1].view(index - 1);
 	return (0);
 }

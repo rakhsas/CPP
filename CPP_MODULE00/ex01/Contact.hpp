@@ -13,14 +13,12 @@ private:
 	std::string	_phoneNumber;
 	std::string	_darkestSecret;
 	int			_index;
-
-	std::string	_printLen(std::string str) const;
 	std::string	_getInput(std::string str) const;
 
 public:
 	Contact();
 	~Contact();
-	void	init(void);
+	int	init(void);
 	void	view(int	index) const;
 	void	setIndex(int	i);
 
