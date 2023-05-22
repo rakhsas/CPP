@@ -61,5 +61,6 @@
 		"unordered_map": "cpp",
 		"vector": "cpp",
 		"iomanip": "cpp"
-	}
+	},
+	"C_Cpp.errorSquiggles": "disabled"
 }

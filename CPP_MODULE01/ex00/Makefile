@@ -1,0 +1,37 @@
+NAME = zombie
+
+CC = c++
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
+
+FILES = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
+
+OBJCS = $(FILES:.cpp=.o)
+
+all : $(NAME)
+
+$(NAME) : $(OBJCS)
+	@echo "\n"
+	@echo "\033[0;32mCompiling zombie..."
+	@$(CC) $(CFLAGS) $(OBJCS) -o $(NAME)
+	@echo "Done !\033[0m"
+
+%.o:%.cpp
+	@printf "\033[0;33mGenerating zombie objects... %-33.33s\r" $@
+	@$(CC)  $(CFLAGS)  -c $<  -o $@
+
+clean :
+	@echo "\033[0;31mCleaning ..."
+	@rm -f $(OBJCS)
+	@echo "\033[0;31mEveryThings' 𝒄𝒍𝒆𝒂𝒏𝒆𝒅\033[0m"
+	@echo "\033[0m"
+
+fclean : clean
+	@echo "\033[0;31mCleaning ..."
+	@echo "\nDeleting executable..."
+	@rm -f $(NAME)
+	@echo "\033[0m"
+
+re :fclean all
+
+run : re clean
+	clear
