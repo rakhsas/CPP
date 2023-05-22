@@ -5,22 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 19:27:35 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/05/22 21:34:31 by rakhsas          ###   ########.fr       */
+/*   Created: 2023/05/22 22:54:01 by rakhsas           #+#    #+#             */
+/*   Updated: 2023/05/22 22:59:20 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-int main ( void )
+int main ( int ac, char **av )
 {
-	std::string	input;
-
 	Harl	harl;
-	do {
-		std::cout << "\033[31m" << "Enter a level: " << "\033[0m";
-		std::getline(std::cin, input);
-		Harl harl;
-		harl.complain(input);
-	} while (input.compare("exit"));
+	if (ac == 2)
+	{
+		harl.complain(av[1]);
+	}
 }

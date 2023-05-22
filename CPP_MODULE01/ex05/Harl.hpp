@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:05:38 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/05/22 18:10:05 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/05/22 19:22:06 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@
 
 class Harl
 {
-    public:
-        Harl(/* args */);
-        ~Harl();
+	private:
+		void    debug(void);
+		void    info(void);
+		void    warning(void);
+		void    error(void);
+	public:
+		Harl(/* args */);
+		~Harl();
 
-        void complain( std::string level );
-    };
-    private:
-        void    debug(void);
-        void    info(void);
-        void    warning(void);
-        void    error(void);
+		void complain( std::string level );
+	};
 
 typedef void (Harl::*t_function) (void);
 

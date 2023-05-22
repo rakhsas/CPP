@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 19:27:35 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/05/22 21:34:31 by rakhsas          ###   ########.fr       */
+/*   Created: 2023/05/22 21:38:27 by rakhsas           #+#    #+#             */
+/*   Updated: 2023/05/22 21:39:21 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
 
-int main ( void )
+#ifndef HARL_HPP
+#define HARL_HPP
+
+#include "iostream"
+
+class Harl
 {
-	std::string	input;
+	private:
+		void    debug(void);
+		void    info(void);
+		void    warning(void);
+		void    error(void);
+	public:
+		Harl(/* args */);
+		~Harl();
 
-	Harl	harl;
-	do {
-		std::cout << "\033[31m" << "Enter a level: " << "\033[0m";
-		std::getline(std::cin, input);
-		Harl harl;
-		harl.complain(input);
-	} while (input.compare("exit"));
-}
+		void complain( std::string level );
+	};
+
+typedef void (Harl::*t_function) (void);
+
+#endif
