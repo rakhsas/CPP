@@ -1,4 +1,4 @@
-NAME = harl
+NAME = Karen
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 # -fsanitize=address -g3
@@ -11,12 +11,12 @@ all : $(NAME)
 
 $(NAME) : $(OBJCS)
 	@echo "\n"
-	@echo "\033[0;32mCompiling Harl..."
+	@echo "\033[0;32mCompiling Karen..."
 	@$(CC) $(CFLAGS) $(OBJCS) -o $(NAME)
 	@echo "Done !\033[0m"
 
 %.o:%.cpp
-	@printf "\033[0;33mGenerating Harl objects... %-33.33s\r" $@
+	@printf "\033[0;33mGenerating Karen objects... %-33.33s\r" $@
 	@$(CC)  $(CFLAGS)  -c $<  -o $@
 
 clean :

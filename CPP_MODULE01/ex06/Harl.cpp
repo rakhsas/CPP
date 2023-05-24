@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   harl.cpp                                           :+:      :+:    :+:   */
+/*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 21:39:25 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/05/22 23:02:04 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/05/24 20:34:29 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	Harl::complain( std::string level ) {
 		i++;
 	if (i < 4)
 	{
-		while (i < 4)
+		while (i > -1)
 		{
 			(this->*function[i])();
-			i++;
+			i--;
 		}
 	} else {
 		std::cout << "[Probably complaining about insignificant problems]" << std::endl;

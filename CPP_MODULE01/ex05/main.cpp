@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 19:27:35 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/05/22 21:34:31 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/05/24 20:09:47 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ int main ( void )
 		std::getline(std::cin, input);
 		Harl harl;
 		harl.complain(input);
-	} while (input.compare("exit"));
+	} while (input.compare("exit") != 0);
+	return (0);
 }
