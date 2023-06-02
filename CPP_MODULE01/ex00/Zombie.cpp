@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:18:24 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/05/18 14:28:10 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/05/25 11:54:30 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Zombie::~Zombie(void)
 
 void    Zombie::announce(void) const
 {
-    std::cout << "<" << this->_name << "> BraiiiiiiinnnzzzZ..." << std::endl;
+    std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
 void    Zombie::setZombieName(std::string name)

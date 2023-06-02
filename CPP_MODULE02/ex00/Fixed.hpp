@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 14:23:09 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/05/25 11:55:31 by rakhsas          ###   ########.fr       */
+/*   Created: 2023/05/25 16:57:15 by rakhsas           #+#    #+#             */
+/*   Updated: 2023/06/02 15:30:27 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
- #include <cstdlib>
-#define N 4
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
-int main( void ) {
-    Zombie *zombie = randomChump(N, "zombi");
+#include <iostream>
 
-    for (size_t i = 0; i < N; i++) {
-        zombie[i].announce();
-    }
-    delete [] zombie;
-    // system("leaks zombie");
-    return 0;
-}
+class Fixed
+{
+	private:
+		int	fixed_point_value;
+		static const int fractional_bits = 8;
+	public:
+		Fixed(void);
+		~Fixed(void);
+		Fixed(const Fixed &src);	// Copy constructor
+		Fixed &operator=(const Fixed &src);	// copy assignment operator
+};
+
+#endif
