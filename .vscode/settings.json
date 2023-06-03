@@ -60,7 +60,11 @@
 		"streambuf": "cpp",
 		"unordered_map": "cpp",
 		"vector": "cpp",
-		"iomanip": "cpp"
+		"iomanip": "cpp",
+		"deque": "cpp",
+		"fstream": "cpp",
+		"list": "cpp",
+		"stack": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 16:57:15 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/06/03 10:02:29 by rakhsas          ###   ########.fr       */
+/*   Created: 2023/06/03 10:17:27 by rakhsas           #+#    #+#             */
+/*   Updated: 2023/06/03 16:07:52 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FIXED_HPP
 
 #include <iostream>
+#include <cmath>
 
 class Fixed
 {
@@ -23,10 +24,17 @@ class Fixed
 	public:
 		Fixed(void);
 		~Fixed(void);
+		Fixed( const int fp );
+		Fixed( const float fp );
 		Fixed(const Fixed &src);	// Copy constructor
 		Fixed &operator=(const Fixed &src);	// copy assignment operator
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );
+		float toFloat( void ) const;
+		int toInt( void ) const;
 };
+
+// std::ostream & operator<<( std::ostream &fo, Fixed const & of );
+
 
 #endif
