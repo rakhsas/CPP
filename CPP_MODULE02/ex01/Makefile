@@ -12,7 +12,7 @@ all : $(NAME)
 $(NAME) : $(OBJCS)
 	@echo "\n"
 	@echo "\033[0;32mCompiling Fixed..."
-	@$(CC) $(CFLAGS) $(OBJCS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJCS) -o $(NAME) -lm
 	@echo "Done !\033[0m"
 
 %.o:%.cpp
