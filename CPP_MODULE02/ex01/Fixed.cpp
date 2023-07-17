@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 10:17:39 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/06/03 21:58:58 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/06/04 14:38:15 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Fixed::Fixed( const int fp ): fixed_point_value(fp * 256) {
 
 Fixed::Fixed( const float fp ) {
 	std::cout << "Float constructor called" << std::endl;
-	fixed_point_value = roundf(fp * 256);
+	fixed_point_value = std::roundf(fp * 256);
 }
 
 //[Copy constructor]
@@ -55,7 +55,6 @@ Fixed::~Fixed() {
 //[getRawBits member function]
 
 int	Fixed::getRawBits( void ) const {
-	// std::cout << "getRawBits member function called" << std::endl;
 	return this->fixed_point_value;
 }
 
@@ -66,7 +65,7 @@ void	Fixed::setRawBits( int const raw ) {
 }
 
 float Fixed::toFloat( void ) const {
-	return static_cast<float>(getRawBits() )/ 256;
+	return static_cast<float>(getRawBits() ) / 256;
 }
 
 int	Fixed::toInt( void ) const {

@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:05:38 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/05/22 19:22:06 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/06/23 20:31:05 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Harl
 		~Harl();
 
 		void complain( std::string level );
-	};
+};
 
 typedef void (Harl::*t_function) (void);
 

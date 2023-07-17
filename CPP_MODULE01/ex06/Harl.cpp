@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 21:39:25 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/05/24 20:34:29 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/06/24 12:54:49 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,18 @@ void	Harl::complain( std::string level ) {
 	int	i = 0;
 	while (i < 4 && levels[i].compare(level))
 		i++;
-	if (i < 4)
+	switch (i)
 	{
-		while (i > -1)
-		{
-			(this->*function[i])();
-			i--;
-		}
-	} else {
-		std::cout << "[Probably complaining about insignificant problems]" << std::endl;
+		case 0:
+			(this->*function[0])();
+		case 1:
+			(this->*function[1])();
+		case 2:
+			(this->*function[2])();
+		case 3:
+			(this->*function[3])();
+		default:
+			std::cout << "[Probably complaining about insignificant problems]" << std::endl;
+		break;
 	}
 }

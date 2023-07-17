@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:16:52 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/05/18 14:27:59 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/06/21 12:21:00 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ class Zombie
 
 Zombie* newZombie(std::string name);
 
-Zombie* randomChump(int n, std::string name);
+void    randomChump(std::string name);
 
 #endif

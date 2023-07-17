@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 16:27:25 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/05/24 18:25:23 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/06/23 18:26:21 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ class HumanB
         void    setWeapon(Weapon &_weapon);
         void    attack() const;
     private:
-        std::string name;
-        Weapon *weapon;
+        std::string _name;
+        Weapon *_weapon;
 };
 
 #endif

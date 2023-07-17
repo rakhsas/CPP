@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 11:48:04 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/06/23 18:41:45 by rakhsas          ###   ########.fr       */
+/*   Created: 2023/07/16 07:21:11 by rakhsas           #+#    #+#             */
+/*   Updated: 2023/07/16 08:12:57 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sed.hpp"
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
-int main (int ac, char **av)
+#include "ClapTrap.hpp"
+
+class ScavTrap : public ClapTrap
 {
-	if (ac == 4)
-	{
-		Sed sed(av[1]);
-		sed.replace(av[2], av[3]);
-		sed.~Sed();
-	}
-	else
-		std::cout << "uses: ./replace [filename] [s1] [s2]" << std::endl;
-}
+    public:
+        ScavTrap( std::string name );
+        ~ScavTrap();
+        int    getHitpoints();
+        void    guardGate();
+    private:
+        ScavTrap();
+        
+};
+
+#endif

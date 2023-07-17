@@ -5,21 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 11:48:04 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/06/23 18:41:45 by rakhsas          ###   ########.fr       */
+/*   Created: 2023/06/08 14:35:25 by rakhsas           #+#    #+#             */
+/*   Updated: 2023/07/16 08:14:51 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sed.hpp"
+#include "ScavTrap.hpp"
 
-int main (int ac, char **av)
+int main()
 {
-	if (ac == 4)
-	{
-		Sed sed(av[1]);
-		sed.replace(av[2], av[3]);
-		sed.~Sed();
-	}
-	else
-		std::cout << "uses: ./replace [filename] [s1] [s2]" << std::endl;
+	ScavTrap ash( "Ash" );
+    ScavTrap ash2( ash );
+
+    ash.attack( "the air" );
+    ash.takeDamage( 10 );
+    ash.beRepaired( 10 );
+    ash.guardGate();
+
+    return EXIT_SUCCESS;
+
 }
