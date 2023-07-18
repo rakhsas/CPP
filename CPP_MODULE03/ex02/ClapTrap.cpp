@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:55:24 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/07/16 10:40:52 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/07/18 15:01:17 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ ClapTrap&	ClapTrap::operator=( const ClapTrap &c1 ) {
 
 void	ClapTrap::attack( const std::string& target ) {
 	check();
-	std::cout << "[ ClapTrap ] " << _name << " attacks " << target << ", causing " << _attack_damage << " points of damage!\n";
+	std::cout << "[ ClapTrap ] -> " << _name << " attacks " << target << ", causing " << _attack_damage << " points of damage!\n";
 	_energy_points -= 1;
 }
 
@@ -53,8 +53,6 @@ void	ClapTrap::beRepaired( unsigned int amount ) {
 	check();
 	_energy_points -= 1;
 	_hit_points += amount;
-	if (_hit_points > 10)
-		_hit_points = 10;
 }
 
 void	ClapTrap::takeDamage( unsigned int amount )
@@ -64,7 +62,7 @@ void	ClapTrap::takeDamage( unsigned int amount )
 		std::cout << "[ ClapTrap ] -> is dead\n";
 		return ;
 	}
-	std::cout << "[ ClapTrap ] -> " << _name << "takes " << amount
+	std::cout << "[ ClapTrap ] -> " << _name << " takes " << amount
 		<< " damage\n";
 	_hit_points -= amount;
 }

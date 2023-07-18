@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:55:24 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/07/16 08:24:51 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/07/18 14:30:36 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ClapTrap::takeDamage( unsigned int amount )
 		std::cout << "ClapTrap is dead\n";
 		return ;
 	}
-	std::cout << "ClapTrap " << _name << "takes " << amount 
+	std::cout << "ClapTrap " << _name << " takes " << amount 
 		<< " damage";
 	_hit_points -= amount;
 }

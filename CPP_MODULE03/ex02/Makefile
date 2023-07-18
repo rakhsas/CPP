@@ -3,7 +3,7 @@ NAME = ScavTrap
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 # -fsanitize=address -g3
 
-FILES = main.cpp ClapTrap.cpp ScavTrap.cpp
+FILES = main.cpp ClapTrap.cpp FragTrap.cpp ScavTrap.cpp
 
 OBJCS = $(FILES:.cpp=.o)
 
