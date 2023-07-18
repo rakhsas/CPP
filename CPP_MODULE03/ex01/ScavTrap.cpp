@@ -14,13 +14,11 @@
 
 ScavTrap::ScavTrap( std::string name ) : ClapTrap( name )
 {
-    std::cout << this->getName() << std::endl;
-    // this->_hit_points=100;
-    // this->_energy_points=50;
-    // this->_attack_damage = 20;
+    this->_hit_points=100;
+    this->_energy_points=50;
+    this->_attack_damage = 20;
     std::cout << "[ ScavTrap ] -> Constructed\n";
 }
-
 ScavTrap::~ScavTrap()
 {
     std::cout << "[ ScavTrap ] -> destructed\n";
@@ -28,8 +26,7 @@ ScavTrap::~ScavTrap()
 
 int ScavTrap::getHitpoints()
 {
-    return 0;
-    // return this->_hit_points;
+    return this->_hit_points;
 }
 
 void    ScavTrap::guardGate()

@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/08 14:35:25 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/07/16 08:14:51 by rakhsas          ###   ########.fr       */
+/*   Created: 2023/07/16 07:28:50 by rakhsas           #+#    #+#             */
+/*   Updated: 2023/07/16 10:41:43 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-int main()
+ScavTrap::ScavTrap( std::string name ) : ClapTrap( name )
 {
-	ScavTrap ash( "Ash" );
-    ScavTrap ash2( ash );
+    this->_hit_points=100;
+    this->_energy_points=50;
+    this->_attack_damage = 20;
+    std::cout << "[ ScavTrap ] -> Constructed\n";
+}
 
-    ash.attack( "the air" );
-    ash.takeDamage( 10 );
-    ash.beRepaired( 10 );
-    ash.guardGate();
+ScavTrap::~ScavTrap()
+{
+    std::cout << "[ ScavTrap ] -> destructed\n";
+}
 
-    return 0;
+int ScavTrap::getHitpoints()
+{
+    return this->_hit_points;
+}
 
+void    ScavTrap::guardGate()
+{
+    std::cout << "[ ScavTrap ] -> is now in Gate keeper mode\n";
 }
