@@ -9,7 +9,6 @@ class FragTrap : public ClapTrap
 	public:
 		FragTrap( std::string );
 		~FragTrap();
-		unsigned int getHit(void);
 		void	highFivesGuys( void );
 };
 

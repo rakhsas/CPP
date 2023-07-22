@@ -1,4 +1,4 @@
-NAME = ScavTrap
+NAME = FragTrap
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 # -fsanitize=address -g3
@@ -11,12 +11,12 @@ all : $(NAME)
 
 $(NAME) : $(OBJCS)
 	@echo "\n"
-	@echo "\033[0;32mCompiling ScavTrap..."
+	@echo "\033[0;32mCompiling FragTrap..."
 	@$(CC) $(CFLAGS) $(OBJCS) -o $(NAME) -lm
 	@echo "Done !\033[0m"
 
 %.o:%.cpp
-	@printf "\033[0;33mGenerating ScavTrap objects... %-33.33s\r" $@
+	@printf "\033[0;33mGenerating FragTrap objects... %-33.33s\r" $@
 	@$(CC)  $(CFLAGS)  -c $<  -o $@
 
 clean :

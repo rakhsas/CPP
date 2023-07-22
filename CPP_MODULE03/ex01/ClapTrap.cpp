@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:55:24 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/07/16 10:40:52 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/07/22 09:08:34 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ void	ClapTrap::beRepaired( unsigned int amount ) {
 	check();
 	_energy_points -= 1;
 	_hit_points += amount;
-	if (_hit_points > 10)
-		_hit_points = 10;
 }
 
 void	ClapTrap::takeDamage( unsigned int amount )

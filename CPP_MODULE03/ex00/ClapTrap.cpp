@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:55:24 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/07/18 14:30:36 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/07/22 08:56:45 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,21 @@ void	ClapTrap::attack( const std::string& target ) {
 	check();
 	std::cout << "ClapTrap " << _name << " attacks " << target << ", causing " << _attack_damage << " points of damage!\n";
 	_energy_points -= 1;
-	_hit_points -= _attack_damage;
 }
 
 void ClapTrap::check()
 {
 	if (_energy_points <= 0 || _hit_points > 10 || _hit_points <= 0 || _hit_points > 10)
 	{
-		std::cout << "ClapTrap died" << std::endl;
-		exit(1);
+		std::cout << "ClapTrap died\n" << std::endl;
+		return ;
 	}
 }
 
 void	ClapTrap::beRepaired( unsigned int amount ) {
 	_energy_points -= 1;
-	_attack_damage += amount;
+	_hit_points += amount;
 	check();
-	if (_attack_damage > 10)
-		_attack_damage = 10;
 }
 
 
@@ -65,6 +62,6 @@ void	ClapTrap::takeDamage( unsigned int amount )
 		return ;
 	}
 	std::cout << "ClapTrap " << _name << " takes " << amount 
-		<< " damage";
+		<< " damage\n";
 	_hit_points -= amount;
 }

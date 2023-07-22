@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 07:21:11 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/07/16 08:12:57 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/07/22 09:13:17 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class ScavTrap : public ClapTrap
         int    getHitpoints();
         void    guardGate();
     private:
-        ScavTrap();
 };
 
 #endif

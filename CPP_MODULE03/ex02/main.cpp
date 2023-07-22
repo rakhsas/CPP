@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 14:35:25 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/07/18 15:42:51 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/07/22 09:15:06 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,18 @@ int main( void )
     ash.attack( "the air" );
     ash.takeDamage( 10 );
     ash.takeDamage( 10 );
-    std::cout << ash.getHit() << std::endl;
-    ash.takeDamage( 10 );
-    ash.takeDamage( 10 );
-    std::cout << ash.getHit() << std::endl;
-    ash.takeDamage( 10 );
-    ash.takeDamage( 10 );
-    std::cout << ash.getHit() << std::endl;
     ash.takeDamage( 10 );
     ash.takeDamage( 10 );
     ash.takeDamage( 10 );
     ash.takeDamage( 10 );
-    std::cout << ash.getHit() << std::endl;
+    ash.takeDamage( 10 );
+    ash.takeDamage( 10 );
+    ash.takeDamage( 10 );
+    ash.takeDamage( 10 );
     ash.highFivesGuys();
-
-    return EXIT_SUCCESS;
+    ash.takeDamage( 10 );
+    ash.beRepaired(10);
+    ash.takeDamage( 10 );
+    ash.takeDamage( 10 );
+    return 0;
 }
