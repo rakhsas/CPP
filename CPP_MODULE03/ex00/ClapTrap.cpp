@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rakhsas <rakhsas@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:55:24 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/07/22 08:56:45 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/07/27 11:15:24 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,12 @@ ClapTrap&	ClapTrap::operator=( const ClapTrap &c1 ) {
 }
 
 void	ClapTrap::attack( const std::string& target ) {
-	check();
+	// check();
+	if (_energy_points <= 0 || _hit_points > 10 || _hit_points <= 0 || _hit_points > 10)
+	{
+		std::cout << "ClapTrap died" << std::endl;
+		return ;
+	}
 	std::cout << "ClapTrap " << _name << " attacks " << target << ", causing " << _attack_damage << " points of damage!\n";
 	_energy_points -= 1;
 }
@@ -61,7 +66,7 @@ void	ClapTrap::takeDamage( unsigned int amount )
 		std::cout << "ClapTrap is dead\n";
 		return ;
 	}
-	std::cout << "ClapTrap " << _name << " takes " << amount 
+	std::cout << "ClapTrap " << _name << " takes " << amount
 		<< " damage\n";
 	_hit_points -= amount;
 }

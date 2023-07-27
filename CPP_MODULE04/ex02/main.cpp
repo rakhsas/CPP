@@ -5,33 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/08 14:35:25 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/07/27 11:15:42 by rakhsas          ###   ########.fr       */
+/*   Created: 2023/07/25 12:02:01 by rakhsas           #+#    #+#             */
+/*   Updated: 2023/07/26 14:32:40 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
+#include "WrongCat.hpp"
 
-int main()
+int main( void )
 {
-	ClapTrap clap1("clap1");
-	clap1.attack("reda");
-	clap1.takeDamage(50);
-	clap1.attack("reda");
-	clap1.takeDamage(1);
-	clap1.takeDamage(1);
-	clap1.takeDamage(1);
-	clap1.takeDamage(1);
-	clap1.takeDamage(1);
-	clap1.takeDamage(1);
-	clap1.takeDamage(1);
-	clap1.takeDamage(1);
-	clap1.takeDamage(1);
-	clap1.takeDamage(1);
-	clap1.takeDamage(1);
-	clap1.beRepaired(3);
-	clap1.takeDamage(1);
-	clap1.takeDamage(1);
-	clap1.takeDamage(1);
-	clap1.takeDamage(1);
+    const AAnimal* j = new Dog();
+    const AAnimal* i = new Cat();
+
+    delete j;//should not create a leak
+    delete i;
+    std::cout << "-------------------\n";
+    Dog basic;
+    {
+        Dog tmp = basic;
+    }
+    std::cout << "-------------------\n";
+    const AAnimal* animals[4] = { new Dog(), new Dog(), new Cat(), new Cat() };
+    for ( int i = 0; i < 4; i++ ) {
+        delete animals[i];
+    }
+    std::cout << "-------------------\n";
+    return 0;
 }

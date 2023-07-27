@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/16 07:21:11 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/07/27 11:16:16 by rakhsas          ###   ########.fr       */
+/*   Created: 2023/07/25 11:02:46 by rakhsas           #+#    #+#             */
+/*   Updated: 2023/07/25 11:07:44 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#include "Dog.hpp"
 
-#include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap
+Dog::Dog(): Animal("Dog")
 {
-    public:
-        ScavTrap( std::string name );
-        ~ScavTrap();
-        void    guardGate();
-    private:
-};
+	std::cout << "[Dog] has been constructed\n";
+}
 
-#endif
+Dog::~Dog()
+{
+	std::cout << "[Dog] has been destructed\n";
+}
+
+void	Dog::makeSound( void ) const
+{
+	std::cout << "Woof!\n";
+}

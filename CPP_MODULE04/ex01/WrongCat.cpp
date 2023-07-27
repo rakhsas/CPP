@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/16 07:21:11 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/07/27 11:16:16 by rakhsas          ###   ########.fr       */
+/*   Created: 2023/07/25 11:34:12 by rakhsas           #+#    #+#             */
+/*   Updated: 2023/07/25 11:51:13 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#include "WrongCat.hpp"
 
-#include "ClapTrap.hpp"
-
-class ScavTrap : public ClapTrap
+WrongCat::WrongCat( void ): WrongAnimal("WrongCat")
 {
-    public:
-        ScavTrap( std::string name );
-        ~ScavTrap();
-        void    guardGate();
-    private:
-};
+	std::cout << type << " constructor called\n";
+}
 
-#endif
+WrongCat::~WrongCat( void )
+{
+	std::cout << type << " destructor called\n";
+}
+
+void	WrongCat::makeSound() const
+{
+	std::cout << "Meow!!!\n";
+}

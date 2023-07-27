@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/16 07:21:11 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/07/27 11:16:16 by rakhsas          ###   ########.fr       */
+/*   Created: 2023/07/25 11:02:53 by rakhsas           #+#    #+#             */
+/*   Updated: 2023/07/25 11:03:23 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#include "iostream"
+#include "Animal.hpp"
+#ifndef DOG_HPP
+#define DOG_HPP
 
-#include "ClapTrap.hpp"
-
-class ScavTrap : public ClapTrap
+class Dog: public Animal
 {
-    public:
-        ScavTrap( std::string name );
-        ~ScavTrap();
-        void    guardGate();
-    private:
+	public:
+		Dog();
+		~Dog();
+		Dog( std::string );
+		void	makeSound( void ) const;
+	private:
 };
 
 #endif

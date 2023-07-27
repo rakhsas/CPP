@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/16 07:21:11 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/07/27 11:16:16 by rakhsas          ###   ########.fr       */
+/*   Created: 2023/07/25 15:09:37 by rakhsas           #+#    #+#             */
+/*   Updated: 2023/07/26 11:34:27 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#include "Brain.hpp"
 
-#include "ClapTrap.hpp"
-
-class ScavTrap : public ClapTrap
+Brain::Brain()
 {
-    public:
-        ScavTrap( std::string name );
-        ~ScavTrap();
-        void    guardGate();
-    private:
-};
+	std::cout << "[Brain] Created\n";
+}
 
-#endif
+Brain::~Brain()
+{
+	std::cout << "[Brain] Destroyed\n";
+}
+
+Brain::Brain( const Brain& src )
+{
+	*this = src;
+}
+
+Brain& Brain::operator=( const Brain &src )
+{
+	if (this != &src)
+	{
+		for (int i = 0; i < 100; i++)
+		{
+			_ideas[i] = src._ideas[i];
+		}
+	}
+	return *this;
+}

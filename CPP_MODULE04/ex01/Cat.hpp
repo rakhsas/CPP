@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/16 07:21:11 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/07/27 11:16:16 by rakhsas          ###   ########.fr       */
+/*   Created: 2023/07/23 14:56:00 by rakhsas           #+#    #+#             */
+/*   Updated: 2023/07/26 12:08:48 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#ifndef CAT_HPP
+#define CAT_HPP
 
-#include "ClapTrap.hpp"
+#include "iostream"
+#include "Animal.hpp"
 
-class ScavTrap : public ClapTrap
+class Cat: public Animal
 {
-    public:
-        ScavTrap( std::string name );
-        ~ScavTrap();
-        void    guardGate();
-    private:
+	public:
+		Cat();
+		~Cat();
+		Cat( const Cat& );
+		Cat& operator=( const Cat& src );
+		void	makeSound( void ) const;
+	private:
+		Brain *brain;
 };
 
 #endif

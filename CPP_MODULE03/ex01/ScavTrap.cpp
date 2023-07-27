@@ -12,21 +12,16 @@
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap( std::string name ) : ClapTrap( name )
+ScavTrap::ScavTrap( std::string name ) : ClapTrap(name)
 {
-    this->_hit_points=100;
-    this->_energy_points=50;
+    this->_hit_points = 100;
+    this->_energy_points = 50;
     this->_attack_damage = 20;
     std::cout << "[ ScavTrap ] -> Constructed\n";
 }
 ScavTrap::~ScavTrap()
 {
     std::cout << "[ ScavTrap ] -> destructed\n";
-}
-
-int ScavTrap::getHitpoints()
-{
-    return this->_hit_points;
 }
 
 void    ScavTrap::guardGate()

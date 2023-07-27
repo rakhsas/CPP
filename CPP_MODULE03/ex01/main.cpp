@@ -30,6 +30,14 @@ int main()
     ash.takeDamage( 10 );
     ash.takeDamage( 10 );
     ash.beRepaired( 10 );
+    ash.beRepaired( 10 );
+    ash.beRepaired( 10 );
+    ash.beRepaired( 10 );
+    ash.beRepaired( 10 );
+    ash.beRepaired( 10 );
+    ash.beRepaired( 10 );
+    ash.beRepaired( 10 );
+    ash.beRepaired( 10 );
     ash.guardGate();
     ash.takeDamage( 10 );
     ash.takeDamage( 10 );
