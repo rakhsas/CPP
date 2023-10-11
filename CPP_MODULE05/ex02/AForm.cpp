@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:41:50 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/10/02 19:09:54 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/10/05 14:02:52 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void    AForm::beSigned( Bureaucrat &ref )
 bool    AForm::getSignStatus() const {
     return isSigned;
 }
+
+void    AForm::setSign( int sign ) { isSigned = sign; }
 
 std::ostream & operator<<( std::ostream &ofstream, AForm const & of )
 {

@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:41:44 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/10/02 19:09:02 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/10/05 13:59:04 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class AForm
         int getGradeExecute() const;
         bool getSignStatus() const;
         void    beSigned( Bureaucrat & );
+        void    setSign( int );
         class GradeTooHighException: public std::exception
         {
             public:
