@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rakhsas <rakhsas@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:53:56 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/10/02 20:07:12 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/10/13 16:07:38 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,14 @@ class PresidentialPardonForm: public AForm
 {
 	private:
 		std::string target;
-	public:
 		PresidentialPardonForm();
-		PresidentialPardonForm( std::string target );
+	public:
+		PresidentialPardonForm( std::string );
 		~PresidentialPardonForm();
 		PresidentialPardonForm( PresidentialPardonForm const &obj );
 		PresidentialPardonForm &operator=( PresidentialPardonForm const & );
-
-		void	executeForm( Bureaucrat const & ) const;
-		class FormIsNotSigned: public std::exception
-		{
-			public:
-				virtual const char* what() const throw() { return "Form Is not Signed!."; }
-		};
+		void	execute( Bureaucrat const & ) const;
+		
 		std::string getTarget() const ;
 
 };

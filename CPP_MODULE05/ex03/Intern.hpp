@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/05 13:13:29 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/10/13 17:05:56 by rakhsas          ###   ########.fr       */
+/*   Created: 2023/10/14 15:29:17 by rakhsas           #+#    #+#             */
+/*   Updated: 2023/10/14 17:13:06 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-#define SHRUBBERYCREATIONFORM_HPP
+#ifndef INTERN_HPP
+#define INTERN_HPP
 
 #include "AForm.hpp"
-
-class ShrubberyCreationForm: public AForm
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+class Intern
 {
-	private:
-		std::string target;
-		ShrubberyCreationForm();
-	public:
-		ShrubberyCreationForm( std::string );
-		~ShrubberyCreationForm();
-		ShrubberyCreationForm( const ShrubberyCreationForm & );
-		ShrubberyCreationForm &operator=( const ShrubberyCreationForm & );
-		void	execute( Bureaucrat const & ) const;
-
+    public:
+        Intern();
+        Intern( Intern const & );
+        Intern &operator=( Intern const & );
+        ~Intern();
+        AForm   *makeForm( std::string, std::string );
+    private:
+        
 };
 
 
