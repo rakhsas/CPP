@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 14:18:47 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/10/02 15:34:27 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/10/15 12:03:00 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,17 @@ class Form
         int getGradeExecute() const;
         bool getSignStatus() const;
         void    beSigned( Bureaucrat & );
-        class GradeTooHighException: public std::exception             
+        class GradeTooHighException: public std::exception
         {
             public:
-                virtual const char* what() const throw() { return "Grade to High"; }
+                virtual const char* what() const throw();
         };
-        class GradeTooLowException: public std::exception             
+        class GradeTooLowException: public std::exception
         {
             public:
-                virtual const char* what() const throw() { return "Grade to Low"; }
-        };    
+                virtual const char* what() const throw();
+        };
 };
+std::ostream & operator<<( std::ostream &fo, Form const & of );
 
 #endif

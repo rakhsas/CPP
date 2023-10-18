@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rakhsas <rakhsas@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:41:50 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/10/05 14:02:52 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/10/14 17:46:34 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,3 +47,9 @@ std::ostream & operator<<( std::ostream &ofstream, AForm const & of )
     ofstream << of.getName() << ", Form grade to sign " << of.getGradeSign() << ", Form grade to execute " << of.getGradeExecute();
     return ofstream;
 }
+const char* AForm::GradeTooLowException::what() const throw()
+{ return "Grade to Low"; }
+const char* AForm::GradeTooHighException::what() const throw()
+{ return "Grade to High"; }
+const char* AForm::FormIsNotSigned::what() const throw()
+{ return "Form Is not Signed!."; }

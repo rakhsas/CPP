@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rakhsas <rakhsas@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:41:44 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/10/05 13:59:04 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/10/14 17:46:16 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,17 @@ class AForm
         class GradeTooHighException: public std::exception
         {
             public:
-                virtual const char* what() const throw() { return "Grade to High"; }
+                virtual const char* what() const throw();
         };
         class GradeTooLowException: public std::exception
         {
             public:
-                virtual const char* what() const throw() { return "Grade to Low"; }
+                virtual const char* what() const throw();
         };
         class FormIsNotSigned: public std::exception
 		{
 			public:
-				virtual const char* what() const throw() { return "Form Is not Signed!."; }
+				virtual const char* what() const throw();
 		};
         virtual void execute(Bureaucrat const & executor) const = 0;
 };

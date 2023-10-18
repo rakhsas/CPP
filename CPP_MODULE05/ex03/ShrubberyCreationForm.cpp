@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:28:33 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/10/14 16:18:23 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/10/16 11:57:05 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=( const ShrubberyCreation
 
 void	ShrubberyCreationForm::execute ( Bureaucrat const &ref ) const
 {
-	if (ref.isExecuted())
+	if (getSignStatus() == false)
+		throw AForm::FormIsNotSigned();
+	else if ( this->getGradeSign() <= ref.getGrade() )
+		throw AForm::GradeTooLowException();
+	else
 	{
 		std::ofstream outfile(target + "_shrubbery");
         outfile << "      /\\\n"

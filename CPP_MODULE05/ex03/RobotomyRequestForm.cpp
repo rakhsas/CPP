@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 16:08:56 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/10/13 16:38:10 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/10/16 11:56:57 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ std::string RobotomyRequestForm::getTarget() const
 }
 void	RobotomyRequestForm::execute( Bureaucrat const &ref ) const
 {
-	if (ref.isExecuted())
-	{
+	if (getSignStatus() == false)
+        throw AForm::FormIsNotSigned();
+    else if ( this->getGradeSign() <= ref.getGrade() )
+        throw AForm::GradeTooLowException();
+	else
 		std::cout << getTarget() << " has been robotomized successfully 50% of the time.\n";
-	}else
-		throw GradeTooLowException();
 }

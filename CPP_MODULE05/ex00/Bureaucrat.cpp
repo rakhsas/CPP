@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 11:08:12 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/10/02 14:13:22 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/10/14 17:42:16 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ Bureaucrat &Bureaucrat::operator=( const Bureaucrat &ref )
 {
     if ( this == &ref)
         return *this;
+    grade = ref.getGrade();
     return *this;
 }
 Bureaucrat::~Bureaucrat(){}
@@ -52,3 +53,7 @@ std::ostream & operator<<( std::ostream &ofstream, Bureaucrat const & of )
     ofstream << of.getName() << ", bureaucrat grade " << of.getGrade();
     return ofstream;
 }
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{ return "Grade to Low"; }
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{ return "Grade to High"; }

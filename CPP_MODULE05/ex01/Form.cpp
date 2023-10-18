@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 14:23:05 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/10/02 15:36:07 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/10/14 17:43:37 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,7 @@ std::ostream & operator<<( std::ostream &ofstream, Form const & of )
     ofstream << of.getName() << ", Form grade to sign " << of.getGradeSign() << ", Form grade to execute " << of.getGradeExecute();
     return ofstream;
 }
+const char* Form::GradeTooLowException::what() const throw()
+{ return "Grade to Low"; }
+const char* Form::GradeTooHighException::what() const throw()
+{ return "Grade to High"; }

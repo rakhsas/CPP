@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:42:03 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/10/13 21:11:05 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/10/15 18:54:04 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <iostream>
  int main()
 {
-    Bureaucrat b("Mohcin", 10);
+    Bureaucrat b("Mohcin", 137);
     {
         try {
             PresidentialPardonForm par("pres");

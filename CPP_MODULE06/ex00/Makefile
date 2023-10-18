@@ -1,9 +1,9 @@
-NAME = Bureaucrat
+NAME = convert
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 # -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address -g3
 
-FILES = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
+FILES = ScalarConverter.cpp
 
 OBJCS = $(FILES:.cpp=.o)
 

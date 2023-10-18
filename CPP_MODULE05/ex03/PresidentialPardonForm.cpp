@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:53:51 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/10/14 17:25:36 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/10/16 11:56:54 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,12 @@ PresidentialPardonForm &PresidentialPardonForm::operator=( PresidentialPardonFor
 
 void	PresidentialPardonForm::execute( Bureaucrat const &ref ) const
 {
-	if (ref.isExecuted())
-	{
+	if (getSignStatus() == false)
+		throw AForm::FormIsNotSigned();
+	else if ( this->getGradeSign() <= ref.getGrade() )
+		throw AForm::GradeTooLowException();
+	else
 		std::cout << getTarget() << " has been pardoned by Zaphod Beeblebrox. \n";
-	}else
-		throw GradeTooLowException();
 }
 
 std::string PresidentialPardonForm::getTarget() const

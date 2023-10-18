@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:42:03 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/10/14 17:11:30 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/10/15 15:38:24 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,11 @@
 		{
             try {
                 AForm* rrf;
-                rrf = Intern.makeForm("shrubbery creation", "Bender");
+                Bureaucrat b("biro9rat", 140);
+                rrf = Intern.makeForm("Shrubbery", "Bender");
                 std::cout << rrf->getName() << std::endl;
+                b.signForm(*rrf);
+                rrf->execute(b);
             }
             catch (std::exception &e) {
 			    std::cout << e.what() << std::endl;
@@ -56,4 +59,4 @@
         std::cout << e.what() << std::endl;
     }
     return 0;
-}
+}h
