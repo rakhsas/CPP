@@ -14,14 +14,14 @@
 #include "stdio.h"
 #include "iomanip"
 ScalarConverter::ScalarConverter(std::string input): input(input){
-    convert();
+	convert();
 }
 ScalarConverter::~ScalarConverter(){}
 std::string ScalarConverter::getInput() const { return input; }
 // Private Methods
 int	ScalarConverter::checkInput()
 {
-    std::string input = this->getInput();
+	std::string input = this->getInput();
 	if (input.compare("nan") == 0 || input.compare("+inf") == 0 ||
 		input.compare("-inf") == 0 || input.compare("+inff") == 0 ||
 		input.compare("-inff") == 0)
@@ -68,42 +68,62 @@ int	ScalarConverter::checkInput()
 }
 
 void    ScalarConverter::convert() {
-    int TYPE = checkInput();
-    displayAsCharacter( TYPE );
-    displayAsInteger( TYPE );
-    displayAsFloat( TYPE );
-    displayAsDouble( TYPE );
+	int TYPE = checkInput();
+	displayAsCharacter( TYPE );
+	displayAsInteger( TYPE );
+	displayAsFloat( TYPE );
+	displayAsDouble( TYPE );
 }
 
-// void    ScalarConverter::displayAsFloat() const {
-    
-// }
-// void    ScalarConverter::displayAsInteger() const {
-    
-// }
-void    ScalarConverter::displayAsCharacter( int TYPE ) const {
-    
-    if (TYPE != NANINF && static_cast<double>(std::stod(getInput())) >= 0)
-    {
-        char c = static_cast<char>(std::stod(input));
-        if ( isprint(c))
-            std::cout << "char: '" << c << "'" << std::endl;
-        else
-            std::cout << "char: Non Displayable" << std::endl;
-    } else {
-        std::cout << "char: impossible" << std::endl;
-    }
+void    ScalarConverter::displayAsFloat( int TYPE ) const {
+	if (TYPE != NANINF && std::stod(getInput()) >= 0)
+	{
+		float c = static_cast<float>(std::stod(input));
+			std::cout << std::fixed << std::setprecision(1) << "float: " << c << "f" << std::endl;
+	} else {
+		std::cout << "float: impossible" << std::endl;
+	}
 }
-// void    ScalarConverter::displayAsDouble() const {
-    
-// }
+
+void    ScalarConverter::displayAsInteger( int TYPE ) const {
+	if (TYPE != NANINF && static_cast<int>(std::stod(getInput())) >= 0)
+	{
+		int c = static_cast<int>(std::stod(input));
+			std::cout << "int: " << c << std::endl;
+	} else {
+		std::cout << "int: impossible" << std::endl;
+	}
+}
+void    ScalarConverter::displayAsCharacter( int TYPE ) const {
+	
+	if (TYPE != NANINF && static_cast<double>(std::stod(getInput())) >= 0)
+	{
+		char c = static_cast<char>(std::stod(input));
+		if ( isprint(c))
+			std::cout << "char: '" << c << "'" << std::endl;
+		else
+			std::cout << "char: Non Displayable" << std::endl;
+	} else {
+		std::cout << "char: impossible" << std::endl;
+	}
+}
+
+void    ScalarConverter::displayAsDouble( int TYPE ) const {
+	if (TYPE != NANINF && std::stod(getInput()) >= 0)
+	{
+		double c = static_cast<double>(std::stod(input));
+			std::cout << std::fixed << std::setprecision(1) << "double: " << c << std::endl;
+	} else {
+		std::cout << "double: impossible" << std::endl;
+	}
+}
 
 int main (int ac, char **av)
 {
-    if (ac == 2)
-    {
-        ScalarConverter a(av[1]);
-    }
-    else
-        std::cout << " Enter something!!!" << std::endl;
+	if (ac == 2)
+	{
+		ScalarConverter a(av[1]);
+	}
+	else
+		std::cout << " Enter something!!!" << std::endl;
 }
