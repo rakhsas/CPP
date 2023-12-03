@@ -3,7 +3,7 @@ NAME = convert
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address -g3
 
-FILES = Serializer.cpp
+FILES = main.cpp
 
 OBJCS = $(FILES:.cpp=.o)
 
@@ -11,12 +11,12 @@ all : $(NAME)
 
 $(NAME) : $(OBJCS)
 	@echo "\n"
-	@echo "\033[0;32mCompiling materias..."
+	@echo "\033[0;32mCompiling ..."
 	@$(CC) $(CFLAGS) $(OBJCS) -o $(NAME) -lm
 	@echo "Done !\033[0m"
 
 %.o:%.cpp
-	@printf "\033[0;33mGenerating materias objects... %-33.33s\r" $@
+	@printf "\033[0;33mGenerating objects... %-33.33s\r" $@
 	@$(CC)  $(CFLAGS) -c $<  -o $@
 
 clean :

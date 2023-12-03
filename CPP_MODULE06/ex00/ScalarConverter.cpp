@@ -16,8 +16,20 @@
 ScalarConverter::ScalarConverter(std::string input): input(input){
 	convert();
 }
+
+ScalarConverter::ScalarConverter( const ScalarConverter &ref )
+{
+	*this = ref;
+}
+
+ScalarConverter& ScalarConverter::operator=( const ScalarConverter& ref ) {
+    if ( this != &ref ) {
+		input = ref.input;
+    }
+    return *this;
+}
 ScalarConverter::~ScalarConverter(){}
-std::string ScalarConverter::getInput() const { return input; }
+std::string ScalarConverter::getInput() { return input; }
 // Private Methods
 int	ScalarConverter::checkInput()
 {
@@ -55,8 +67,10 @@ int	ScalarConverter::checkInput()
 			input.find_first_of(".") == 0 || // catches `.0f`
 			input[input.find_first_of("f") + 1] != '\0') // catches `0.0f0`
 			return (ERROR);
-		else
+		else{
+			this->input = input.substr(0, input.length() - 1);
 			return (FLOAT);
+		}
 	}
 	else if ((input.length() == 1 && std::isprint(input[0])) ||
 		(input.length() == 1 && std::isalpha(input[0])))
@@ -76,43 +90,56 @@ void    ScalarConverter::convert() {
 }
 
 void    ScalarConverter::displayAsFloat( int TYPE ) const {
-	if (TYPE != NANINF && std::stod(getInput()) >= 0)
-	{
-		float c = static_cast<float>(std::stod(input));
-			std::cout << std::fixed << std::setprecision(1) << "float: " << c << "f" << std::endl;
+	char* endptr;
+	double convertedValue = strtod(input.c_str(), &endptr);
+	if (*endptr == '\0' && TYPE != NANINF && convertedValue >= 0) {
+		float c = static_cast<float>(convertedValue);
+		std::cout << std::fixed << std::setprecision(1) << "float: " << c << "f" << std::endl;
+	} else if (TYPE == NANINF){
+		std::cout << "float: nanf" << std::endl;
 	} else {
 		std::cout << "float: impossible" << std::endl;
 	}
 }
 
-void    ScalarConverter::displayAsInteger( int TYPE ) const {
-	if (TYPE != NANINF && static_cast<int>(std::stod(getInput())) >= 0)
-	{
-		int c = static_cast<int>(std::stod(input));
-			std::cout << "int: " << c << std::endl;
+void ScalarConverter::displayAsInteger(int TYPE) const {
+	char* endptr;
+	long convertedValue = strtol(input.c_str(), &endptr, 10);
+
+	// Check if the conversion was successful and the value is non-negative
+	if (TYPE != NANINF && convertedValue >= 0) {
+		int c = static_cast<int>(convertedValue);
+		std::cout << "int: " << c << std::endl;
 	} else {
 		std::cout << "int: impossible" << std::endl;
 	}
 }
-void    ScalarConverter::displayAsCharacter( int TYPE ) const {
-	
-	if (TYPE != NANINF && static_cast<double>(std::stod(getInput())) >= 0)
-	{
-		char c = static_cast<char>(std::stod(input));
-		if ( isprint(c))
+
+void ScalarConverter::displayAsCharacter(int TYPE) const {
+	char* endptr;
+	double convertedValue = strtod(input.c_str(), &endptr);
+	// std::cout << (char)convertedValue << "\n";
+	if (TYPE != NANINF && convertedValue >= 0) {
+		char c = static_cast<char>(convertedValue);
+		if (isprint(c)) {
 			std::cout << "char: '" << c << "'" << std::endl;
-		else
+		} else {
 			std::cout << "char: Non Displayable" << std::endl;
+		}
 	} else {
 		std::cout << "char: impossible" << std::endl;
 	}
 }
 
 void    ScalarConverter::displayAsDouble( int TYPE ) const {
-	if (TYPE != NANINF && std::stod(getInput()) >= 0)
+	char* endptr;
+	double convertedValue = strtod(input.c_str(), &endptr);
+	if (*endptr == '\0' && TYPE != NANINF && convertedValue >= 0)
 	{
-		double c = static_cast<double>(std::stod(input));
-			std::cout << std::fixed << std::setprecision(1) << "double: " << c << std::endl;
+		double c = static_cast<double>(convertedValue);
+		std::cout << std::fixed << std::setprecision(1) << "double: " << c << std::endl;
+	} else if (TYPE == NANINF){
+		std::cout << "double: nan" << std::endl;
 	} else {
 		std::cout << "double: impossible" << std::endl;
 	}

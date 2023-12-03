@@ -19,16 +19,19 @@
 #define INT 0
 #define ERROR 999
 #include "iostream"
-
+#include <string>
+#include "cstdlib"
 class ScalarConverter
 {
     private:
-        std::string input;
         ScalarConverter(  );
     public:
+        std::string input;
         ~ScalarConverter();
         ScalarConverter( std::string input );
-        std::string getInput() const;
+        ScalarConverter( const ScalarConverter &);
+        ScalarConverter &operator= (const ScalarConverter &);
+        std::string getInput();
         void    convert(  );
         int     checkInput();
         void    displayAsInteger( int ) const;
