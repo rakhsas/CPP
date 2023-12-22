@@ -1,10 +1,11 @@
 NAME = convert
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address -g3
-FILES = main.cpp
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
+
+FILES = main.cpp MutantStack.cpp
+
 OBJCS = $(FILES:.cpp=.o)
-HEADERS = $(wildcard *.hpp)
 
 all : $(NAME)
 
@@ -14,8 +15,8 @@ $(NAME) : $(OBJCS)
 	@$(CC) $(CFLAGS) $(OBJCS) -o $(NAME) -lm
 	@echo "Done !\033[0m"
 
-%.o:%.cpp $(HEADERS)
-	@printf "\033[0;33mGenerating materias ... %-33.33s\r" $@
+%.o:%.cpp
+	@printf "\033[0;33mGenerating  objects... %-33.33s\r" $@
 	@$(CC)  $(CFLAGS) -c $<  -o $@
 
 clean :

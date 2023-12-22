@@ -4,12 +4,12 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address -g3
 
 FILES = main.cpp
-
+HEADER = Array.hpp
 OBJCS = $(FILES:.cpp=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJCS)
+$(NAME) : $(OBJCS) $(HEADER)
 	@echo "\n"
 	@echo "\033[0;32mCompiling ..."
 	@$(CC) $(CFLAGS) $(OBJCS) -o $(NAME) -lm
