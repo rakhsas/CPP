@@ -24,5 +24,5 @@ int main(int ac, char **Av)
         }
     }
     else
-        std::cout << "\e[0;31m Please Enter the input second database... \033[0m" << std::endl;
+        std::cout << "\e[0;31mError: could not open file.\033[0m" << std::endl;
 }
