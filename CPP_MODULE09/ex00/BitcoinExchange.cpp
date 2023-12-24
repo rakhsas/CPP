@@ -73,6 +73,8 @@ void	BitcoinExchange::parseDate( std::string date )
 	{
 		throw std::invalid_argument("Invalid date format");
 	}
+	if (day.find_first_not_of("0123456789") != std::string::npos)
+		throw std::invalid_argument("Invalid date format");
 	this->year = std::stoi(year);
 	if (this->year < std::stoi(date_begin_range.substr(0, 4))  || this->year > std::stoi(date_end_range.substr(0, 4)))
 		throw std::invalid_argument("Invalid year");
@@ -110,13 +112,13 @@ void BitcoinExchange::processFile( std::string path )
 				getline(ss, date, '|');
 				date.pop_back();
 				if (date.empty() || date.find_first_not_of("0123456789-") != std::string::npos)
-				{
-					// std::cout << "date: *" << date << "*" << std::endl;
 					throw std::invalid_argument("Invalid date");
-				}
 				getline(ss, rate, '\n');
-				rate.erase(rate.begin());
-				if (rate.empty() || rate.find_first_not_of("-0123456789.") != std::string::npos)
+				if (*rate.begin() == ' ')
+					rate.erase(rate.begin());
+				if (rate.substr(0, 1).find_first_not_of("0123456789") != std::string::npos || rate.substr(rate.length()-2 , rate.length() -1).find_first_not_of("0123456789") != std::string::npos)
+					throw std::invalid_argument("Invalid rate");
+				if (rate.empty() || rate.find_first_not_of("0123456789.") != std::string::npos)
 					throw std::invalid_argument("Invalid rate");
 				parseDate(date);
 				if (std::strtof(rate.c_str(), NULL) < 0 || std::strtof(rate.c_str(), NULL) > 1000
