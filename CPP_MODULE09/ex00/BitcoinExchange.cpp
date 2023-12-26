@@ -64,6 +64,9 @@ int	BitcoinExchange::getDaysInMonth(int year, int month)
 
 void	BitcoinExchange::parseDate( std::string date )
 {
+	// std::cout << date << std::endl;
+	// 		throw std::invalid_argument("Error: bad input => " + date);
+
 	std::stringstream ss(date);
 	std::string year, month, day;
 	getline(ss, year , '-');
@@ -71,29 +74,34 @@ void	BitcoinExchange::parseDate( std::string date )
 	getline(ss, day , ' ');
 	if (year.size() != 4 || month.size() != 2 || day.size() != 2)
 	{
-		throw std::invalid_argument("Invalid date format");
+		throw std::invalid_argument("Error: bad input => " + date);
 	}
 	if (day.find_first_not_of("0123456789") != std::string::npos)
-		throw std::invalid_argument("Invalid date format");
+		throw std::invalid_argument("Error: bad input => " + date);
 	this->year = std::stoi(year);
 	if (this->year < std::stoi(date_begin_range.substr(0, 4))  || this->year > std::stoi(date_end_range.substr(0, 4)))
-		throw std::invalid_argument("Invalid year");
+		throw std::invalid_argument("Error: bad input => " + date);
 	this->month = std::stoi(month);
-	if (this->month < 0 || this->month > 12)
-		throw std::invalid_argument("Invalid month");
+	if (this->month <= 0 || this->month > 12)
+		throw std::invalid_argument("Error: bad input => " + date);
 	this->day = std::stoi(day);
-	if (this->day < 0 || this->day > getDaysInMonth(this->year, this->month))
-		throw std::invalid_argument("Invalid day");
+	if (this->day <= 0 || this->day > getDaysInMonth(this->year, this->month))
+		throw std::invalid_argument("Error: bad input => " + date);
 }
 
-void	BitcoinExchange::getFromData( std::string date )
+void	BitcoinExchange::getFromData( std::string date, std::string rate )
 {
 	std::map<std::string, std::string>::iterator it = _data.lower_bound(date);
 	if (it->first == date)
 	{}
 	else if (it != _data.begin())
 		it--;
-	std::cout << it->second << std::endl;
+	float nb = std::stof(rate);
+	if (nb < 0 )
+		throw std::invalid_argument("Error: not a positive number.");
+	if (nb > 1000)
+		throw std::invalid_argument("Error: too large a number.");
+	std::cout << date << " => " << rate << " = " << nb * std::stof(it->second) << std::endl;
 }
 
 void BitcoinExchange::processFile( std::string path )
@@ -110,23 +118,22 @@ void BitcoinExchange::processFile( std::string path )
 			try {
 				ss << line;
 				getline(ss, date, '|');
-				date.pop_back();
+				if (*(date.end() - 1) == ' ')
+					date.pop_back();
 				if (date.empty() || date.find_first_not_of("0123456789-") != std::string::npos)
-					throw std::invalid_argument("Invalid date");
+					throw std::invalid_argument("Error: bad input => " + date);
 				getline(ss, rate, '\n');
 				if (*rate.begin() == ' ')
 					rate.erase(rate.begin());
-				if (rate.substr(0, 1).find_first_not_of("0123456789") != std::string::npos || rate.substr(rate.length()-2 , rate.length() -1).find_first_not_of("0123456789") != std::string::npos)
+				// if (rate.substr(0, 1).find_first_not_of("0123456789") != std::string::npos || rate.substr(rate.length()-2 , rate.length() -1).find_first_not_of("0123456789") != std::string::npos)
+				if (rate.find("-") != std::string::npos)
+					throw std::invalid_argument("Error: not a positive number.");
+				parseDate(date);
+				if (rate[0] == '.' || rate[rate.size() - 1] == '.')
 					throw std::invalid_argument("Invalid rate");
 				if (rate.empty() || rate.find_first_not_of("0123456789.") != std::string::npos)
 					throw std::invalid_argument("Invalid rate");
-				parseDate(date);
-				if (std::strtof(rate.c_str(), NULL) < 0 || std::strtof(rate.c_str(), NULL) > 1000
-					|| rate.find_first_of(".") != rate.find_last_of("."))
-				{
-					throw std::invalid_argument("Invalid rate");
-				}
-				getFromData(date);
+				getFromData(date, rate);
 			} catch (const std::exception &e) {
 				std::cout << e.what() << std::endl;ss.clear();
 				ss.str("");

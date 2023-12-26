@@ -1,7 +1,7 @@
 NAME = btc
 
 CC = c++
-CFLAGLLS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
 
 FILES = main.cpp BitcoinExchange.cpp
 

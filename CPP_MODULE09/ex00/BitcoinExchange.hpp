@@ -23,7 +23,7 @@ class BitcoinExchange
         std::string getPath() const;
         void parseDate( std::string );
         void processFile();
-        void getFromData( std::string );
+        void getFromData( std::string, std::string );
         void processFile( std::string );
         int getDaysInMonth(int, int);
         std::map<std::string, std::string> _data;
