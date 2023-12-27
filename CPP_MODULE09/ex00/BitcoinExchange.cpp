@@ -6,7 +6,8 @@ BitcoinExchange::BitcoinExchange( std::string path ): _path(path)
 	processFile();
 	std::map<std::string, std::string>::iterator it_begin = _data.begin();
 	date_begin_range = it_begin->first;
-	date_end_range = _data.end()->first;
+	// std::cout << "here: " << _data.end()->first << std::endl;
+	// date_end_range = _data.end()->first;
 	std::map<std::string, std::string>::iterator it_end = _data.end();
 	it_end--;
 	date_end_range = it_end->first;
