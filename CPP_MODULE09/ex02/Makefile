@@ -1,12 +1,12 @@
-NAME = RPN
+NAME = PmergeMe
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3# -std=c++98
 
-FILES = main.cpp RPN.cpp
+FILES = main.cpp PmergeMe.cpp
 
 OBJCS = $(FILES:.cpp=.o)
-HEADERS = RPN.hpp
+HEADERS = PmergeMe.hpp
 all : $(NAME)
 
 $(NAME) : $(OBJCS) $(HEADERS)

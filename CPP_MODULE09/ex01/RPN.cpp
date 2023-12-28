@@ -1,7 +1,7 @@
 #include "RPN.hpp"
 
 RPN::RPN( std::string input ): input(input){
-	handleErrors();
+	std :: cout << evaluateRPN() << std :: endl;
 }
 
 RPN::~RPN(){}
@@ -20,59 +20,51 @@ const RPN &RPN::operator=(const RPN &ref)
 
 std::string RPN::getInput() const { return input; }
 
-void	RPN::handleErrors( void ) {
-	std::string reversed = getInput();
-	std::string input = std::string(reversed.rbegin(), reversed.rend());
-	std::stringstream ss(input);
-	std::string number;
-	while (getline(ss, number, ' '))
+int ft_stoi(const std::string& str)
+{
+	int num;
+	std::stringstream ss(str);
+	ss >> num;
+	return num;
+}
+
+long long RPN::evaluateRPN()
+{
+	int left;
+	int right;
+	int result;
+	std::stringstream postfix(getInput());
+	std::stack<int> temp;
+	std::string s;
+
+	while (postfix >> s)
 	{
-		if (number.length() > 1)
-			throw std::invalid_argument("just numbers accepted without sign !!!");
-		if (number.find_first_not_of("0123456789+-*/") != std::string::npos)
+		if (s.length() > 1 || s.find_first_not_of("0123456789+-/* ") != std::string::npos)
 			throw std::invalid_argument("just numbers and basic arithmetic expression allowed !!!");
-		_data.push(number);
-	}
-	int total, pro, sum, sub, div;
-	if (_data.size() == 2)
-		throw std::invalid_argument("You have to enter at least one operation !!!");
-	std::string first = _data.top();
-	total = 1;
-	sum = sub = 0;
-	pro = div = 1;
-	while (_data.size())
-	{
-		first = _data.top();
-		if (first.find_first_not_of("*+-/") != std::string::npos)
+		if (s == "+" || s == "-" || s == "/" || s == "*")
 		{
-			sum += std::stoi(first);
-			sub -= std::stoi(first);
-			div /= std::stoi(first);
-			pro *= std::stoi(first);
-		}
-		else if (first.find_first_not_of("0123456789") != std::string::npos)
-		{
-			if (first == "*")
-				total *= pro;
-			else if (first == "-")
-				total += sub;
-			else if (first == "+")
-				total += sum;
-			else
+			if (temp.size() < 2)
+				throw std::invalid_argument("Not enough operands");
+			right = temp.top();
+			temp.pop();
+			left = temp.top();
+			temp.pop();
+			switch (s.at(0))
 			{
-				if(div == 0)
-				{
-					total = 0;
-					break ;
-				}
-				total /= div;
+				case '+': result =  left + right ; break;
+				case '-': result =  left - right ; break;
+				case '/':
+					if (right != 0)
+						result =  left / right;
+					else
+						throw std::invalid_argument("Division by zero");
+				break;
+				case '*': result =  left * right ; break;
 			}
-			sum = sub = 0;
-			pro = div = 1;
+			temp.push(result);
 		}
-		_data.pop();
+		else
+			temp.push(ft_stoi(s));
 	}
-	std::cout << total << std::endl;
-
-
+	return temp.top();
 }

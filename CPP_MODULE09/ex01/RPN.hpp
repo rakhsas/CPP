@@ -18,6 +18,9 @@ public:
 	std::string getInput() const;
 	void	handleErrors( void );
 
-	std::stack<std::string> _data;
+	std::stack<int> _data;
+	long long evaluateRPN(void);
+
+	// std::stack<std::string> _data;
 };
 
