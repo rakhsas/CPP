@@ -27,28 +27,28 @@ int ft_stoi(const std::string& str)
 	ss >> num;
 	return num;
 }
-
+#include <vector>
 long long RPN::evaluateRPN()
 {
 	int left;
 	int right;
 	int result;
-	std::stringstream postfix(getInput());
-	std::stack<int> temp;
+	std::stringstream ss(getInput());
+	if (ss.str().empty())
+		throw std::invalid_argument("Empty string");
 	std::string s;
-
-	while (postfix >> s)
+	while (ss >> s)
 	{
 		if (s.length() > 1 || s.find_first_not_of("0123456789+-/* ") != std::string::npos)
 			throw std::invalid_argument("just numbers and basic arithmetic expression allowed !!!");
 		if (s == "+" || s == "-" || s == "/" || s == "*")
 		{
-			if (temp.size() < 2)
+			if (_data.size() < 2)
 				throw std::invalid_argument("Not enough operands");
-			right = temp.top();
-			temp.pop();
-			left = temp.top();
-			temp.pop();
+			right = _data.top();
+			_data.pop();
+			left = _data.top();
+			_data.pop();
 			switch (s.at(0))
 			{
 				case '+': result =  left + right ; break;
@@ -61,10 +61,14 @@ long long RPN::evaluateRPN()
 				break;
 				case '*': result =  left * right ; break;
 			}
-			temp.push(result);
+			_data.push(result);
 		}
 		else
-			temp.push(ft_stoi(s));
+			_data.push(ft_stoi(s));
 	}
-	return temp.top();
+	if (_data.size() == 0)
+		throw std::invalid_argument("Empty stack");
+	else if (_data.size() > 1)
+		throw std::invalid_argument("Too many operands");
+	return _data.top();
 }

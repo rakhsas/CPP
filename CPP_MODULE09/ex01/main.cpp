@@ -8,7 +8,7 @@ int main(int ac, char **Av)
             RPN ref(Av[1]);
         } catch (const std::exception &e )
         {
-            std::cout << "\e[0;31m ERROR: " << e.what() << ".\033[0m"<< std::endl;
+            std::cout << "\e[0;31mERROR: " << e.what() << ".\033[0m"<< std::endl;
         }
     }
     else
