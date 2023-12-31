@@ -10,7 +10,7 @@ class MutantStack : public std::stack<T, Container>
 {
     public:
         MutantStack() {}
-        MutantStack(MutantStack const &src) : std::stack<T>(src) {}
+        MutantStack(MutantStack const &src) : std::stack<T, Container>(src) {}
         ~MutantStack() {}
         MutantStack &operator=(MutantStack const &src) {
             if (this == &src)

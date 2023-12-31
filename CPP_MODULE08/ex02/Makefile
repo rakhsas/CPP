@@ -1,9 +1,9 @@
 NAME = convert
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror -std=c++98 # -fsanitize=address -g3
 
-FILES = main.cpp MutantStack.cpp
+FILES = main.cpp
 
 OBJCS = $(FILES:.cpp=.o)
 
